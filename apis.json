@@ -1,0 +1,68 @@
+{
+    "name": "Practice Fusion",
+    "description": "Find out all you need to know about EHRs from the #1 cloud-based electronic health record platform for doctors and patients. Get the latest news, tips and updates on EHR, QPP, CMS and Healthcare research and data. Our experts will guide help guide you ...",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/1354-practice-fusion.jpg",
+    "tags": [
+        "have api",
+        "healthcare"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/practice-fusion\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Practice Fusion",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/1354-practice-fusion.jpg",
+            "humanURL": "http:\/\/www.practicefusion.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/practice-fusion-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Base",
+            "url": "https:\/\/pfws.practicefusion.com\/PFAPI\/"
+        },
+        {
+            "type": "Blog",
+            "url": "http:\/\/www.practicefusion.com\/blog\/"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/www.practicefusion.com\/blog\/feed\/"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/practice-fusion"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/practice-fusion"
+        },
+        {
+            "type": "Developers",
+            "url": "https:\/\/developer.practicefusion.com\/"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/practicefusion"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/practicefusion"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/www.practicefusion.com\/"
+        }
+    ]
+}
