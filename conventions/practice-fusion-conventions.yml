@@ -1,0 +1,51 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/metadata
+docs: https://www.practicefusion.com/fhir/api-specifications/
+notes: >-
+  Cross-cutting request/response semantics for the Practice Fusion FHIR R4 API,
+  derived from the CapabilityStatement and the HL7 FHIR R4 RESTful conventions
+  the API implements (US Core 6.1.0, SMART App Launch 2.0.0, Bulk Data 1.0.1).
+authentication:
+  style: SMART-on-FHIR OAuth2 bearer
+  see: authentication/practice-fusion-authentication.yml
+media_types:
+  request: [application/fhir+json]
+  response: [application/fhir+json]
+versioning:
+  style: uri-path
+  value: /fhir/r4/v1/{organizationId}
+  see: lifecycle/practice-fusion-lifecycle.yml
+pagination:
+  style: fhir-bundle-link
+  request_params: [_count]
+  response:
+    container: Bundle
+    total_field: total
+    next_link: Bundle.link[relation=next].url
+  note: Search results return a FHIR searchset Bundle; follow link[relation=next] for continuation.
+search:
+  style: fhir-search
+  common_params: [_id, _lastUpdated, _include, _revinclude, _summary, _elements]
+  note: US Core mandatory search parameters per resource type.
+idempotency:
+  supported: true
+  mechanisms:
+  - name: conditional-create
+    header: If-None-Exist
+    note: FHIR conditional create — repeated create with the same search criteria yields one resource (declared on Group for Bulk Data $export).
+  - name: version-aware-update
+    headers: [ETag, If-Match]
+    note: Optimistic-concurrency updates; If-Match on the resource version prevents duplicate/conflicting writes (412 on mismatch).
+  caveat: API is predominantly read/search; write surface is limited (Group create/update for bulk export).
+bulk_data:
+  standard: FHIR Bulk Data Access IG v1.0.1
+  operation: Group/{id}/$export
+  async: true
+  note: Kick-off returns 202 with a Content-Location poll URL; NDJSON output.
+error_envelope:
+  resource: OperationOutcome
+  see: errors/practice-fusion-problem-types.yml
+rate_limiting:
+  signal: HTTP 429
+  note: 429 Too Many Requests on throttling; no documented rate-limit header schema.

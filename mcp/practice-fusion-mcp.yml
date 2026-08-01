@@ -1,0 +1,52 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: conformance/practice-fusion-capability-statement.json
+notes: >-
+  No official Practice Fusion MCP server was found. This is a CANDIDATE tool
+  list derived from the FHIR R4 CapabilityStatement: every one of the 47
+  resource types supports `read` and (45 of them) `search-type`, so each maps to
+  a read-by-id tool and a search tool. A representative subset of the clinically
+  central US Core resources is enumerated below. Access is gated by SMART-on-FHIR
+  scopes (see scopes/practice-fusion-scopes.yml).
+server:
+  name: practice-fusion
+  transport: http
+  url: null
+tools:
+- name: get_patient
+  description: Read a Patient resource by id.
+  source_operation: fhir/r4/Patient/{id} [read]
+- name: search_patients
+  description: Search Patient resources (US Core parameters).
+  source_operation: fhir/r4/Patient [search-type]
+- name: get_observation
+  description: Read an Observation by id.
+  source_operation: fhir/r4/Observation/{id} [read]
+- name: search_observations
+  description: Search Observations for a patient (vitals, labs, smoking status).
+  source_operation: fhir/r4/Observation [search-type]
+- name: search_conditions
+  description: Search a patient's Condition (problem list) resources.
+  source_operation: fhir/r4/Condition [search-type]
+- name: search_medication_requests
+  description: Search a patient's MedicationRequest resources.
+  source_operation: fhir/r4/MedicationRequest [search-type]
+- name: search_allergies
+  description: Search a patient's AllergyIntolerance resources.
+  source_operation: fhir/r4/AllergyIntolerance [search-type]
+- name: search_immunizations
+  description: Search a patient's Immunization resources.
+  source_operation: fhir/r4/Immunization [search-type]
+- name: search_encounters
+  description: Search a patient's Encounter resources.
+  source_operation: fhir/r4/Encounter [search-type]
+- name: search_diagnostic_reports
+  description: Search a patient's DiagnosticReport resources.
+  source_operation: fhir/r4/DiagnosticReport [search-type]
+- name: search_document_references
+  description: Search a patient's DocumentReference resources.
+  source_operation: fhir/r4/DocumentReference [search-type]
+- name: export_group
+  description: Kick off a FHIR Bulk Data group-level $export (async).
+  source_operation: fhir/r4/Group/{id}/$export [operation]

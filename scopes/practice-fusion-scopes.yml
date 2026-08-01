@@ -1,0 +1,73 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/.well-known/smart-configuration
+docs: https://www.practicefusion.com/fhir/api-specifications/
+model: SMART on FHIR v2 (SMART App Launch 2.0.0)
+notes: >-
+  Practice Fusion uses SMART-on-FHIR v2 scopes (the SMART configuration advertises
+  permission-v1, permission-v2, permission-patient, permission-user, and
+  permission-offline capabilities). Resource-level scopes follow the SMART v2
+  grammar `<context>/<Resource>.<cruds>` where context is patient, user, or
+  system, Resource is any of the 47 supported FHIR R4 resource types (or `*`),
+  and cruds is a subset of c-r-u-d-s. The API is predominantly read/search
+  (read + search-type on all resources), so `.rs` is the operative access.
+schemes:
+- name: SMART-on-FHIR OAuth2
+  source: smart-configuration
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/authorize
+    tokenUrl: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/token
+  - flow: clientCredentials
+    tokenUrl: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/token
+identity_scopes:
+- scope: openid
+  description: OpenID Connect authentication; issues an id_token.
+- scope: fhirUser
+  description: Returns the FHIR resource representing the current user.
+- scope: profile
+  description: OpenID profile claim.
+- scope: offline_access
+  description: Requests a refresh token for long-lived access (permission-offline).
+- scope: launch
+  description: EHR launch context (launch-ehr).
+- scope: launch/patient
+  description: Standalone launch scoped to a selected patient.
+- scope: launch/encounter
+  description: Standalone launch scoped to a selected encounter.
+scope_patterns:
+- pattern: patient/{Resource}.rs
+  description: Read + search a resource type in the patient compartment (v2 grammar).
+  example: patient/Observation.rs
+- pattern: user/{Resource}.rs
+  description: Read + search a resource type in the authorized user's context.
+  example: user/Condition.rs
+- pattern: system/{Resource}.rs
+  description: Backend (client_credentials) read + search access to a resource type.
+  example: system/Patient.rs
+- pattern: patient/*.rs
+  description: Read + search across all patient-compartment resources.
+supported_resources:
+- AllergyIntolerance
+- CarePlan
+- CareTeam
+- Condition
+- Coverage
+- Device
+- DiagnosticReport
+- DocumentReference
+- Encounter
+- Goal
+- Immunization
+- Location
+- Medication
+- MedicationRequest
+- Observation
+- Organization
+- Patient
+- Practitioner
+- PractitionerRole
+- Procedure
+- Provenance
+- RelatedPerson
+- ServiceRequest

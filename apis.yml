@@ -1,8 +1,14 @@
 aid: practice-fusion
 name: Practice Fusion
-description: Practice Fusion is a company surfaced as a portfolio company of battery-ventures and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Practice Fusion is a cloud-based electronic health record (EHR) platform for
+  independent ambulatory medical practices, serving roughly 6.4% of U.S.
+  ambulatory practices with more than 43 million clinical records and around 5
+  million patient visits per month. Its developer surface centers on an ONC
+  Certified Health IT FHIR R4 (Patient Data Sharing / PDS) API implementing US
+  Core 6.1.0, SMART App Launch 2.0.0, and Bulk Data Access 1.0.1 over
+  SMART-on-FHIR OAuth2, alongside proprietary bi-directional Labs and Imaging
+  APIs and a partner marketplace of 600+ integrated companies.
 url: https://raw.githubusercontent.com/api-evangelist/practice-fusion/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,12 +16,139 @@ x-backed-by:
 - battery-ventures
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 14
+  pass: local-v1
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.practicefusion.com/assets/img/practice-fusion-logo.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Healthcare
+- Electronic Health Records
+- EHR
+- FHIR
+- Interoperability
+- Medical
+- Health IT
+- SMART on FHIR
+- Clinical Data
+apis:
+- name: Practice Fusion FHIR API (Patient Data Sharing)
+  description: >-
+    ONC Certified FHIR R4 (v4.0.1) API implementing US Core 6.1.0, SMART App
+    Launch 2.0.0, and Bulk Data Access 1.0.1. Provides read and search access
+    across 47 FHIR resource types (Patient, Observation, Condition, Encounter,
+    MedicationRequest, DiagnosticReport, DocumentReference, and more) via
+    SMART-on-FHIR OAuth2 (authorization code, client credentials, refresh
+    token). Provider/System access and Patient (FMH) access endpoints are
+    provisioned per practice organization.
+  humanURL: https://www.practicefusion.com/fhir/
+  baseURL: https://api.practicefusion.com/fhir/r4/v1/
+  properties:
+  - type: Documentation
+    url: https://www.practicefusion.com/fhir/api-specifications/
+  - type: APIReference
+    url: https://www.practicefusion.com/fhir/api-specifications/
+  - type: GettingStarted
+    url: https://www.practicefusion.com/fhir/get-started/
+  - type: Authentication
+    url: authentication/practice-fusion-authentication.yml
+  - type: OAuthScopes
+    url: scopes/practice-fusion-scopes.yml
+  - type: WellKnown
+    url: well-known/practice-fusion-well-known.yml
+  - type: SmartConfiguration
+    url: well-known/practice-fusion-smart-configuration.json
+  - type: CapabilityStatement
+    url: conformance/practice-fusion-capability-statement.json
+- name: Practice Fusion Labs API
+  description: >-
+    Proprietary bi-directional laboratory integration API connecting practices
+    with 300+ independent, hospital, and health-system labs including Labcorp,
+    Quest Diagnostics, RadNet, SimonMed, and Rayus for lab order transmission
+    and results delivery.
+  humanURL: https://www.practicefusion.com/practice-fusion-apis/
+  baseURL: https://www.practicefusion.com/labs-documentation/
+  properties:
+  - type: Documentation
+    url: https://www.practicefusion.com/labs-documentation/
+- name: Practice Fusion Imaging API
+  description: >-
+    Proprietary bi-directional imaging integration API for order receipt and
+    study transmission across imaging providers, supporting 100,000+ medical
+    professionals.
+  humanURL: https://www.practicefusion.com/practice-fusion-apis/
+  baseURL: https://www.practicefusion.com/imaging-documentation/
+  properties:
+  - type: Documentation
+    url: https://www.practicefusion.com/imaging-documentation/
+common:
+- type: DomainSecurity
+  url: security/practice-fusion-domain-security.yml
+- type: Authentication
+  url: authentication/practice-fusion-authentication.yml
+- type: OAuthScopes
+  url: scopes/practice-fusion-scopes.yml
+- type: WellKnown
+  url: well-known/practice-fusion-well-known.yml
+- type: Conformance
+  url: conformance/practice-fusion-conformance.yml
+- type: Compliance
+  url: https://www.practicefusion.com/onc-certified-ehr/
+- type: ErrorCatalog
+  url: errors/practice-fusion-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/practice-fusion-lifecycle.yml
+- type: Conventions
+  url: conventions/practice-fusion-conventions.yml
+- type: Idempotency
+  url: conventions/practice-fusion-conventions.yml
+- type: DataModel
+  url: data-model/practice-fusion-data-model.yml
+- type: MCPServer
+  url: mcp/practice-fusion-mcp.yml
+- type: LLMsTxt
+  url: llms/practice-fusion-llms.txt
+- type: Website
+  url: https://www.practicefusion.com/
+- type: DeveloperPortal
+  url: https://www.practicefusion.com/fhir/
+- type: Documentation
+  url: https://www.practicefusion.com/fhir/api-specifications/
+- type: APIReference
+  url: https://www.practicefusion.com/fhir/api-specifications/
+- type: GettingStarted
+  url: https://www.practicefusion.com/fhir/get-started/
+- type: Support
+  url: https://partnersupport.practicefusion.com/s/
+- type: SignUp
+  url: https://pfpds.practicefusion.com/s/Registration
+- type: Blog
+  url: https://www.practicefusion.com/blog/
+- type: Pricing
+  url: https://www.practicefusion.com/pricing/
+- type: StatusPage
+  url: https://status.practicefusion.com/
+- type: TermsOfService
+  url: https://www.practicefusion.com/pages/terms-of-use.html
+- type: PrivacyPolicy
+  url: https://www.practicefusion.com/pages/privacy-policy.html
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

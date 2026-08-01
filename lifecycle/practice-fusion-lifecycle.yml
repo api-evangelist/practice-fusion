@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.practicefusion.com/fhir/api-specifications/
+versioning:
+  scheme: uri-path
+  current: r4/v1
+  fhir_version: 4.0.1
+  note: >-
+    Version is carried in the FHIR service base URL path
+    (/fhir/r4/v1/{organizationId} for provider/system access,
+    /fhir/fmh/r4/v1/{organizationId} for patient access).
+status_page: https://status.practicefusion.com/
+certification:
+  onc_certified_health_it: true
+  onc_certification_page: https://www.practicefusion.com/onc-certified-ehr/
+  real_world_testing: https://www.practicefusion.com/real-world-testing/
+  certified_api_fees: https://www.practicefusion.com/assets/misc/API-Fees-ONC-Cert-Criteria-for-Health-IT_May-2024.xlsx
+service_base_url_directory: https://www.practicefusion.com/assets/static_files/ServiceBaseURLs.json
+terms_of_service: https://www.practicefusion.com/pds-api/termsofservice/
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: No formal deprecation/Sunset-header policy published; superseded resources are governed by ONC Real World Testing.
+deprecated_operations: []

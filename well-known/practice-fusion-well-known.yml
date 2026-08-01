@@ -1,0 +1,34 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.practicefusion.com/fhir/r4/v1/{organizationId}
+notes: >-
+  Practice Fusion's SMART-on-FHIR discovery documents are served per practice
+  organization under the FHIR service base URL
+  (https://api.practicefusion.com/fhir/r4/v1/{organizationId}), not at the root
+  api host. The documents below were fetched live against the published test
+  organization 118b460b-8390-4754-8e4a-1dd5ee20f599 and saved verbatim. The
+  master directory of live FHIR Service Base URLs for all practices is published
+  at https://www.practicefusion.com/assets/static_files/ServiceBaseURLs.json.
+host: https://api.practicefusion.com
+documents:
+- path: /fhir/r4/v1/{organizationId}/.well-known/smart-configuration
+  standard: SMART App Launch 2.0.0
+  status: 200
+  file: practice-fusion-smart-configuration.json
+- path: /fhir/r4/v1/{organizationId}/.well-known/jwk
+  standard: JWKS
+  status: 200
+  file: practice-fusion-jwk.json
+- path: /fhir/r4/v1/{organizationId}/metadata
+  standard: FHIR R4 CapabilityStatement
+  status: 200
+  file: ../conformance/practice-fusion-capability-statement.json
+- path: /.well-known/security.txt
+  standard: RFC 9116
+  status: 404
+- path: /.well-known/openid-configuration
+  standard: OpenID Connect Discovery
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  standard: RFC 8414
+  status: 404

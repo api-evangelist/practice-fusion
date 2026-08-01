@@ -1,0 +1,78 @@
+generated: '2026-07-20'
+method: derived
+source: conformance/practice-fusion-capability-statement.json
+notes: >-
+  Entity-relationship graph derived from the 47 FHIR R4 resource types the
+  Practice Fusion CapabilityStatement exposes, plus the standard US Core
+  reference fields that link them. Patient is the compartment anchor; most
+  clinical resources reference the patient via `subject` or `patient`.
+  Relationships reflect HL7 FHIR R4 reference semantics, not Practice
+  Fusion-specific extensions.
+anchor: Patient
+entities:
+- name: Patient
+  relationships: []
+- name: Encounter
+  relationships:
+  - {type: belongs_to, target: Patient, via: subject}
+  - {type: has_one, target: Location, via: location}
+  - {type: has_many, target: Practitioner, via: participant}
+- name: Observation
+  relationships:
+  - {type: belongs_to, target: Patient, via: subject}
+  - {type: belongs_to, target: Encounter, via: encounter}
+- name: Condition
+  relationships:
+  - {type: belongs_to, target: Patient, via: subject}
+  - {type: belongs_to, target: Encounter, via: encounter}
+- name: MedicationRequest
+  relationships:
+  - {type: belongs_to, target: Patient, via: subject}
+  - {type: has_one, target: Medication, via: medicationReference}
+  - {type: has_one, target: Practitioner, via: requester}
+- name: MedicationDispense
+  relationships:
+  - {type: belongs_to, target: Patient, via: subject}
+  - {type: has_one, target: MedicationRequest, via: authorizingPrescription}
+- name: AllergyIntolerance
+  relationships:
+  - {type: belongs_to, target: Patient, via: patient}
+- name: Immunization
+  relationships:
+  - {type: belongs_to, target: Patient, via: patient}
+- name: Procedure
+  relationships:
+  - {type: belongs_to, target: Patient, via: subject}
+  - {type: belongs_to, target: Encounter, via: encounter}
+- name: DiagnosticReport
+  relationships:
+  - {type: belongs_to, target: Patient, via: subject}
+  - {type: has_many, target: Observation, via: result}
+- name: DocumentReference
+  relationships:
+  - {type: belongs_to, target: Patient, via: subject}
+  - {type: has_one, target: Binary, via: content.attachment.url}
+- name: ServiceRequest
+  relationships:
+  - {type: belongs_to, target: Patient, via: subject}
+  - {type: has_one, target: Practitioner, via: requester}
+- name: CarePlan
+  relationships:
+  - {type: belongs_to, target: Patient, via: subject}
+  - {type: has_many, target: CareTeam, via: careTeam}
+  - {type: has_many, target: Goal, via: goal}
+- name: CareTeam
+  relationships:
+  - {type: belongs_to, target: Patient, via: subject}
+  - {type: has_many, target: Practitioner, via: participant.member}
+- name: Coverage
+  relationships:
+  - {type: belongs_to, target: Patient, via: beneficiary}
+  - {type: has_one, target: Organization, via: payor}
+- name: PractitionerRole
+  relationships:
+  - {type: belongs_to, target: Practitioner, via: practitioner}
+  - {type: belongs_to, target: Organization, via: organization}
+- name: Provenance
+  relationships:
+  - {type: has_many, target: Practitioner, via: agent.who}

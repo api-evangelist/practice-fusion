@@ -1,0 +1,41 @@
+# Practice Fusion
+
+> Practice Fusion is a cloud-based electronic health record (EHR) platform for independent ambulatory medical practices. Its developer surface is an ONC Certified FHIR R4 (Patient Data Sharing / PDS) API implementing US Core 6.1.0, SMART App Launch 2.0.0, and Bulk Data Access 1.0.1 over SMART-on-FHIR OAuth2, plus proprietary bi-directional Labs and Imaging APIs and a 600+ company partner marketplace.
+
+## APIs
+
+- [Practice Fusion FHIR API (Patient Data Sharing)](https://www.practicefusion.com/fhir/): FHIR R4 (v4.0.1) read/search across 47 resource types. Base URL https://api.practicefusion.com/fhir/r4/v1/{organizationId} (provider/system) and /fhir/fmh/r4/v1/{organizationId} (patient).
+- [Practice Fusion Labs API](https://www.practicefusion.com/labs-documentation/): Bi-directional lab order/results integration (Labcorp, Quest, RadNet, SimonMed, Rayus).
+- [Practice Fusion Imaging API](https://www.practicefusion.com/imaging-documentation/): Bi-directional imaging order/study integration.
+
+## Authentication
+
+- [SMART-on-FHIR OAuth2](https://www.practicefusion.com/fhir/api-specifications/): authorization_code, client_credentials, and refresh_token flows; PKCE S256; confidential-symmetric, confidential-asymmetric (JWKS), and public clients; OpenID Connect; optional mutual-TLS client certificates.
+- Register at the [PDS API Portal](https://pfpds.practicefusion.com/s/Registration).
+
+## Discovery
+
+- SMART configuration: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/.well-known/smart-configuration
+- CapabilityStatement: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/metadata
+- Service Base URL directory: https://www.practicefusion.com/assets/static_files/ServiceBaseURLs.json
+
+## Docs
+
+- [Getting Started](https://www.practicefusion.com/fhir/get-started/)
+- [API Specifications](https://www.practicefusion.com/fhir/api-specifications/)
+- [Partner Support](https://partnersupport.practicefusion.com/s/)
+- [ONC Certified EHR](https://www.practicefusion.com/onc-certified-ehr/)
+- [Terms of Service](https://www.practicefusion.com/pds-api/termsofservice/)
+- [Status](https://status.practicefusion.com/)
+
+## Repo Artifacts
+
+- Authentication: authentication/practice-fusion-authentication.yml
+- OAuth/SMART scopes: scopes/practice-fusion-scopes.yml
+- Conformance: conformance/practice-fusion-conformance.yml
+- Conventions: conventions/practice-fusion-conventions.yml
+- Error catalog: errors/practice-fusion-problem-types.yml
+- Data model: data-model/practice-fusion-data-model.yml
+- Lifecycle: lifecycle/practice-fusion-lifecycle.yml
+- Well-known index: well-known/practice-fusion-well-known.yml
+- MCP (candidate): mcp/practice-fusion-mcp.yml

@@ -1,0 +1,60 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/.well-known/smart-configuration
+docs: https://www.practicefusion.com/fhir/api-specifications/
+summary:
+  types: [oauth2, openIdConnect, mutualTLS]
+  standard: SMART App Launch 2.0.0 (SMART-on-FHIR)
+  oauth2_flows: [authorizationCode, clientCredentials, refreshToken]
+  pkce: S256
+  client_authentication:
+  - client-confidential-symmetric   # shared secret
+  - client-confidential-asymmetric  # private key JWT (JWKS)
+  - client-public                   # public standalone launch with PKCE
+schemes:
+- name: SMART-on-FHIR OAuth2
+  type: oauth2
+  standard: SMART App Launch 2.0.0
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/authorize
+    tokenUrl: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/token
+    pkce: S256
+  - flow: clientCredentials
+    tokenUrl: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/token
+  - flow: refreshToken
+    tokenUrl: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/token
+  introspection_endpoint: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/introspect
+  jwks_uri: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/.well-known/jwk
+- name: OpenID Connect
+  type: openIdConnect
+  note: >-
+    sso-openid-connect capability advertised in the SMART configuration; id_token
+    issued for the fhirUser / user identity.
+- name: Mutual TLS (client certificate)
+  type: mutualTLS
+  note: >-
+    The CapabilityStatement security service advertises "Certificates: SSL where
+    client must have a certificate registered with the server" in addition to
+    SMART-on-FHIR.
+capabilities:
+- launch-ehr
+- launch-standalone
+- client-public
+- client-confidential-symmetric
+- client-confidential-asymmetric
+- sso-openid-connect
+- context-ehr-patient
+- context-ehr-encounter
+- context-standalone-patient
+- context-standalone-encounter
+- permission-offline
+- permission-patient
+- permission-user
+- permission-v1
+- permission-v2
+- authorize-post
+registration:
+  process: PDS API Partner Registration -> approval -> PDS API Portal application
+  url: https://pfpds.practicefusion.com/s/Registration
+  application_inputs: [application name, description, privacy policy, JWKS URL, redirect URLs, launch URL, requested scopes]

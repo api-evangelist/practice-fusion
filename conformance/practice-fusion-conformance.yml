@@ -1,0 +1,44 @@
+generated: '2026-07-20'
+method: searched
+source: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/metadata
+docs: https://www.practicefusion.com/fhir/api-specifications/
+capability_statement:
+  file: practice-fusion-capability-statement.json
+  fhirVersion: 4.0.1
+  publisher: MedicaSoft, LLC
+  date: '2025-06-12'
+  resource_count: 47
+compliance_program:
+  onc_certified_health_it: true
+  onc_certification_page: https://www.practicefusion.com/onc-certified-ehr/
+  real_world_testing: https://www.practicefusion.com/real-world-testing/
+  ehi_export: https://www.practicefusion.com/ehi-export-documentation/
+  hipaa: true
+standards:
+- id: fhir-r4
+  conforms: true
+  evidence: CapabilityStatement fhirVersion 4.0.1
+- id: us-core-6.1.0
+  conforms: true
+  evidence: Implements US Core Profiles v6.1.0 (per api-specifications)
+- id: smart-app-launch-2.0.0
+  conforms: true
+  evidence: SMART configuration advertises launch-ehr/standalone, permission-v2, sso-openid-connect
+- id: fhir-bulk-data-1.0.1
+  conforms: true
+  evidence: Bulk Data Access IG v1.0.1 group-level $export (per api-specifications)
+- id: oauth2
+  conforms: true
+  evidence: SMART-on-FHIR OAuth2 authorization_endpoint + token_endpoint
+- id: oidc
+  conforms: true
+  evidence: sso-openid-connect capability; id_token issuance
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: FHIR uses OperationOutcome resources for errors, not application/problem+json
+- id: onc-certified-health-it
+  conforms: true
+  evidence: ONC Certified EHR; Certified API Fees + Real World Testing published
+- id: hipaa
+  conforms: true
+  evidence: HIPAA-covered EHR platform

@@ -1,0 +1,60 @@
+generated: '2026-07-20'
+method: derived
+source: conformance/practice-fusion-capability-statement.json
+format: fhir-operationoutcome
+notes: >-
+  Practice Fusion's FHIR R4 API returns errors as FHIR OperationOutcome
+  resources (not RFC 9457 problem+json). Each error carries issue[] entries with
+  severity, code (an IssueType), and diagnostics. The catalog below maps the
+  standard FHIR REST HTTP statuses to their OperationOutcome issue codes,
+  derived from the FHIR R4 RESTful spec and the resource interactions declared
+  in the CapabilityStatement (read + search-type on all 47 resources).
+envelope:
+  resourceType: OperationOutcome
+  field: issue[]
+  members: [severity, code, diagnostics, expression]
+problems:
+- status: 400
+  issue_code: invalid
+  title: Bad Request
+  meaning: Malformed request or invalid search parameter/query.
+- status: 401
+  issue_code: login
+  title: Unauthorized
+  meaning: Missing, expired, or invalid OAuth2 access token.
+- status: 403
+  issue_code: forbidden
+  title: Forbidden
+  meaning: Token lacks the required SMART scope for the resource/interaction.
+- status: 404
+  issue_code: not-found
+  title: Not Found
+  meaning: The requested resource instance or endpoint does not exist.
+- status: 405
+  issue_code: not-supported
+  title: Method Not Allowed
+  meaning: Interaction not supported for the resource (e.g. write on a read-only resource).
+- status: 406
+  issue_code: not-supported
+  title: Not Acceptable
+  meaning: Requested response format not supported (FHIR JSON/XML only).
+- status: 410
+  issue_code: deleted
+  title: Gone
+  meaning: The resource instance was deleted.
+- status: 412
+  issue_code: conflict
+  title: Precondition Failed
+  meaning: Version-aware update (If-Match / ETag) precondition not met.
+- status: 422
+  issue_code: processing
+  title: Unprocessable Entity
+  meaning: Resource failed FHIR/US-Core profile validation.
+- status: 429
+  issue_code: throttled
+  title: Too Many Requests
+  meaning: Rate limit exceeded.
+- status: 500
+  issue_code: exception
+  title: Internal Server Error
+  meaning: Unexpected server error.
