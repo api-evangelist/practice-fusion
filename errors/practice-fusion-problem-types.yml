@@ -1,6 +1,7 @@
-generated: '2026-07-20'
-method: derived
+generated: '2026-08-14'
+method: searched
 source: conformance/practice-fusion-capability-statement.json
+docs: https://www.practicefusion.com/pds-api/developer-guide/
 format: fhir-operationoutcome
 notes: >-
   Practice Fusion's FHIR R4 API returns errors as FHIR OperationOutcome
@@ -58,3 +59,24 @@ problems:
   issue_code: exception
   title: Internal Server Error
   meaning: Unexpected server error.
+pds_api_statuses:
+  source: https://www.practicefusion.com/pds-api/developer-guide/
+  method: searched
+  note: >-
+    The PDS API Developer Guide publishes an explicit status-code table for the
+    patient-access (Patient Fusion PHR) surface at
+    https://api2.practicefusion.com/phr/patient/v1. It differs from the FHIR
+    surface in two ways worth knowing: it uses 300 Multiple Choices as a real
+    business outcome (patient match ambiguity) and it labels 422 "Bad Request"
+    rather than Unprocessable Entity. Quoted as published.
+  statuses:
+  - {status: 200, label: OK, meaning: Successful request.}
+  - {status: 300, label: Multiple Choices, meaning: More than one patient matched the request.}
+  - {status: 302, label: Found, meaning: OAuth redirect.}
+  - {status: 401, label: Unauthorized, meaning: Partner not authorized for the requested scopes.}
+  - {status: 404, label: Not Found, meaning: Patient or resource not found.}
+  - {status: 422, label: Bad Request, meaning: Invalid request.}
+  - {status: 429, label: Too Many Requests, meaning: Rate limit exceeded; reissue the call once within the limit.}
+see:
+- conventions/practice-fusion-conventions.yml
+- rate-limits/practice-fusion-rate-limits.yml

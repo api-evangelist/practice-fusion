@@ -1,4 +1,4 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: searched
 source: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/metadata
 docs: https://www.practicefusion.com/fhir/api-specifications/
@@ -6,13 +6,29 @@ capability_statement:
   file: practice-fusion-capability-statement.json
   fhirVersion: 4.0.1
   publisher: MedicaSoft, LLC
+  software: NXT
+  version: 1.0.0
   date: '2025-06-12'
   resource_count: 47
+  interactions: {read: 47, search-type: 45, create: 1, update: 1}
+  operations: [Group/$export]
+  ownership_note: >-
+    The document is served from Practice Fusion's own FHIR service base URL
+    (https://api.practicefusion.com/fhir/r4/v1/{organizationId}/metadata) and
+    describes that endpoint, but names MedicaSoft, LLC as publisher and "NXT" as
+    the software: Practice Fusion's certified FHIR R4 server is a vendor-supplied
+    implementation, and the CapabilityStatement is the server software's own
+    self-description. It is Practice Fusion's deployment and Practice Fusion's
+    host, so it is recorded as their contract with the vendor attribution kept
+    intact rather than scrubbed.
 compliance_program:
   onc_certified_health_it: true
   onc_certification_page: https://www.practicefusion.com/onc-certified-ehr/
   real_world_testing: https://www.practicefusion.com/real-world-testing/
   ehi_export: https://www.practicefusion.com/ehi-export-documentation/
+  api_fee_disclosure: https://www.practicefusion.com/assets/misc/API-Fees-ONC-Cert-Criteria-for-Health-IT_May-2024.xlsx
+  parent_security_program: https://veradigm.com/legal/security-program/
+  certifications: [SOC 2 Type 2, EHNAC accreditation, EPCS certification, ISO 9001:2015, ONC Certification Rule]
   hipaa: true
 standards:
 - id: fhir-r4
@@ -42,3 +58,34 @@ standards:
 - id: hipaa
   conforms: true
   evidence: HIPAA-covered EHR platform
+- id: soc2-type2
+  conforms: true
+  evidence: 'Veradigm Security Program: "These activities include, but are not limited to, SOC 2, Type 2 reports, EHNAC accreditation, EPCS certifications and ISO 9001:2015 reviews."'
+  source: https://veradigm.com/legal/security-program/
+- id: iso-9001-2015
+  conforms: true
+  evidence: Named in the Veradigm Security Program standards-based security section.
+  source: https://veradigm.com/legal/security-program/
+- id: ehnac
+  conforms: true
+  evidence: EHNAC accreditation named in the Veradigm Security Program.
+  source: https://veradigm.com/legal/security-program/
+- id: epcs
+  conforms: true
+  evidence: EPCS certification named in the Veradigm Security Program; e-prescribing of controlled substances is a shipped Practice Fusion feature.
+  source: https://veradigm.com/legal/security-program/
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on www.practicefusion.com and api.practicefusion.com (probed 2026-08-14).
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No deprecation policy or Sunset/Deprecation header support published.
+- id: a2a-agent-card
+  conforms: false
+  evidence: /.well-known/agent-card.json and /.well-known/agent.json return 404 on every Practice Fusion host (probed 2026-08-14).
+- id: fhir-subscription
+  conforms: false
+  evidence: Subscription is not among the 47 resource types in the CapabilityStatement; there is no push/event surface on the FHIR API.
+- id: iso-27001
+  conforms: false
+  evidence: Not named on the Veradigm Security Program page; ISO 9001:2015 is a quality-management standard, not an information-security one.

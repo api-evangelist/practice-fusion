@@ -1,7 +1,9 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: searched
 source: https://api.practicefusion.com/fhir/r4/v1/{organizationId}/metadata
 docs: https://www.practicefusion.com/fhir/api-specifications/
+docs_additional:
+- https://www.practicefusion.com/pds-api/developer-guide/
 notes: >-
   Cross-cutting request/response semantics for the Practice Fusion FHIR R4 API,
   derived from the CapabilityStatement and the HL7 FHIR R4 RESTful conventions
@@ -47,5 +49,30 @@ error_envelope:
   resource: OperationOutcome
   see: errors/practice-fusion-problem-types.yml
 rate_limiting:
+  enforced: true
   signal: HTTP 429
-  note: 429 Too Many Requests on throttling; no documented rate-limit header schema.
+  headers: []
+  retry_after: undocumented
+  limits_published: false
+  source: https://www.practicefusion.com/pds-api/developer-guide/
+  note: >-
+    Practice Fusion confirms in the PDS API Developer Guide that rate limiting is
+    enforced on every API call and returns 429 on exhaustion, but publishes no
+    number, window, burst or response header — deliberately, so that the logic
+    can be adjusted from an architectural risk analysis. 429 is the only runtime
+    signal an agent gets. See rate-limits/practice-fusion-rate-limits.yml.
+tracing:
+  request_id_header: none-documented
+  note: >-
+    No request-id / correlation-id header is documented on either surface. The
+    Kong gateway fronting api.practicefusion.com does return a `request_id` in
+    its own JSON error envelope for unrouted paths, but that is the gateway's
+    404 body, not a documented API convention.
+sandbox:
+  available: false
+  note: >-
+    Practice Fusion publishes no sandbox or test environment for the PDS/FHIR
+    API. The shared sandboxes named in the Veradigm Connect tier table are for
+    Veradigm EHR (fhir.fhirpoint.open.allscripts.com), and the Veradigm sandbox
+    page does not list Practice Fusion. Development happens against real
+    organization endpoints once an application is approved.

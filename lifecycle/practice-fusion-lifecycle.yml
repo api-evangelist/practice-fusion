@@ -1,4 +1,4 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: searched
 source: https://www.practicefusion.com/fhir/api-specifications/
 versioning:
@@ -22,3 +22,27 @@ deprecation:
   sunset_header: null
   note: No formal deprecation/Sunset-header policy published; superseded resources are governed by ONC Real World Testing.
 deprecated_operations: []
+release_notes:
+  url: https://help.practicefusion.com/s/releasenotes
+  redirected_from: https://www.practicefusion.com/release-notes/
+  scope: EHR product
+  api_scope: false
+  machine_readable: false
+  note: >-
+    Product release notes are published in a Salesforce Experience Cloud
+    community; the served HTML is a JavaScript shell with no entries in it, and
+    nothing in it is API-specific. See changelog/practice-fusion-changelog.yml.
+documentation_versioning:
+  artifact: EHI Export Documentation
+  scheme: integer version directories (v1..v9)
+  current: v9
+  url: https://www.practicefusion.com/ehi-export-documentation/
+  note: Superseded versions stay online, so the export schema history is reconstructable.
+support:
+  partner_portal: https://partnersupport.practicefusion.com/s/
+  knowledge_base: https://help.practicefusion.com/s/article/using-fhir-in-practice-fusion#fordevelopers
+  developer_program_contact: VeradigmConnect@veradigm.com
+sla:
+  url: null
+  uptime_target: null
+  note: No published uptime SLA for the FHIR API; status page is the only availability signal.

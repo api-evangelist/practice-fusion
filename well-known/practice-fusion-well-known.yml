@@ -1,34 +1,82 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: searched
 source: https://api.practicefusion.com/fhir/r4/v1/{organizationId}
 notes: >-
   Practice Fusion's SMART-on-FHIR discovery documents are served per practice
-  organization under the FHIR service base URL
-  (https://api.practicefusion.com/fhir/r4/v1/{organizationId}), not at the root
-  api host. The documents below were fetched live against the published test
-  organization 118b460b-8390-4754-8e4a-1dd5ee20f599 and saved verbatim. The
-  master directory of live FHIR Service Base URLs for all practices is published
-  at https://www.practicefusion.com/assets/static_files/ServiceBaseURLs.json.
+  organization under the FHIR service base URL, not at the root api host: the
+  provider/system surface at
+  https://api.practicefusion.com/fhir/r4/v1/{organizationId} and the patient
+  (FollowMyHealth) surface at
+  https://api.practicefusion.com/fhir/fmh/r4/v1/{organizationId}. Both were
+  fetched live against the published organization 118b460b-8390-4754-8e4a-1dd5ee20f599
+  and saved verbatim. The patient surface delegates its issuer, JWKS, authorize,
+  token and introspect endpoints to muauthentication.followmyhealth.com —
+  FollowMyHealth is the patient-engagement platform of Veradigm, Practice
+  Fusion's parent, which is why the FMH SMART configuration names a different
+  host than the FHIR base it is served from. Separately, the Patient Fusion
+  consumer identity provider at auth.patientfusion.com serves a full RFC 8414 /
+  OIDC discovery document anonymously. The RFC 9116, RFC 8414 and OIDC paths at
+  the ROOT of both www and api hosts all 404 — api.practicefusion.com fronts a
+  Kong gateway that answers unrouted paths with {"message":"no Route matched
+  with those values"}, and www.practicefusion.com returns its 404 HTML page.
+  The master directory of live FHIR Service Base URLs for every practice is
+  published at
+  https://www.practicefusion.com/assets/static_files/ServiceBaseURLs.json (a
+  6.8 MB FHIR Bundle of Organization + Endpoint resources).
 host: https://api.practicefusion.com
+hosts_probed:
+- https://api.practicefusion.com
+- https://www.practicefusion.com
+- https://api2.practicefusion.com
+- https://auth.patientfusion.com
+- https://www.patientfusion.com
 documents:
 - path: /fhir/r4/v1/{organizationId}/.well-known/smart-configuration
+  host: api.practicefusion.com
   standard: SMART App Launch 2.0.0
   status: 200
   file: practice-fusion-smart-configuration.json
+- path: /fhir/fmh/r4/v1/{organizationId}/.well-known/smart-configuration
+  host: api.practicefusion.com
+  standard: SMART App Launch 2.0.0 (patient / FollowMyHealth surface)
+  status: 200
+  file: practice-fusion-fmh-smart-configuration.json
 - path: /fhir/r4/v1/{organizationId}/.well-known/jwk
+  host: api.practicefusion.com
   standard: JWKS
   status: 200
   file: practice-fusion-jwk.json
 - path: /fhir/r4/v1/{organizationId}/metadata
+  host: api.practicefusion.com
   standard: FHIR R4 CapabilityStatement
   status: 200
   file: ../conformance/practice-fusion-capability-statement.json
-- path: /.well-known/security.txt
-  standard: RFC 9116
-  status: 404
 - path: /.well-known/openid-configuration
-  standard: OpenID Connect Discovery
-  status: 404
+  host: auth.patientfusion.com
+  standard: OpenID Connect Discovery 1.0
+  status: 200
+  file: practice-fusion-patientfusion-openid-configuration.json
 - path: /.well-known/oauth-authorization-server
+  host: auth.patientfusion.com
   standard: RFC 8414
-  status: 404
+  status: 200
+  note: byte-identical to the openid-configuration document above; not saved twice
+- path: /assets/static_files/ServiceBaseURLs.json
+  host: www.practicefusion.com
+  standard: ONC Service Base URL publication (FHIR Bundle)
+  status: 200
+  note: 6.8 MB Bundle of Organization + Endpoint resources; not vendored into the repo for size
+misses:
+- {path: /.well-known/security.txt, host: api.practicefusion.com, standard: RFC 9116, status: 404}
+- {path: /.well-known/security.txt, host: www.practicefusion.com, standard: RFC 9116, status: 404}
+- {path: /.well-known/openid-configuration, host: www.practicefusion.com, standard: OIDC Discovery, status: 404}
+- {path: /.well-known/oauth-authorization-server, host: api.practicefusion.com, standard: RFC 8414, status: 404}
+- {path: /.well-known/api-catalog, host: www.practicefusion.com, standard: RFC 9727, status: 404}
+- {path: /.well-known/ai-plugin.json, host: www.practicefusion.com, status: 404}
+- {path: /.well-known/agent-card.json, host: www.practicefusion.com, standard: A2A 1.0.0, status: 404}
+- {path: /.well-known/agent.json, host: www.practicefusion.com, standard: A2A legacy, status: 404}
+- {path: /.well-known/agent-card.json, host: api.practicefusion.com, standard: A2A 1.0.0, status: 404}
+- {path: /.well-known/agent.json, host: api.practicefusion.com, standard: A2A legacy, status: 404}
+- {path: /.well-known/agent-card.json, host: api2.practicefusion.com, standard: A2A 1.0.0, status: 404}
+- {path: /.well-known/agent-card.json, host: www.patientfusion.com, standard: A2A 1.0.0, status: 404}
+checked: '2026-08-14'

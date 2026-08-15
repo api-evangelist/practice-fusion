@@ -17,9 +17,9 @@ x-backed-by:
 x-tier: stub
 x-tier-reason: portfolio-lead
 x-enrichment:
-  date: '2026-07-20'
+  date: '2026-08-14'
   status: enriched
-  artifacts_added: 14
+  artifacts_added: 13
   pass: local-v1
 accessModel:
   pricing: unknown
@@ -36,7 +36,7 @@ accessModel:
 image: https://www.practicefusion.com/assets/img/practice-fusion-logo.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-08-14'
 tags:
 - Company
 - Healthcare
@@ -77,6 +77,39 @@ apis:
     url: well-known/practice-fusion-smart-configuration.json
   - type: CapabilityStatement
     url: conformance/practice-fusion-capability-statement.json
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: RateLimits
+    url: rate-limits/practice-fusion-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/practice-fusion-problem-types.yml
+  - type: DataModel
+    url: data-model/practice-fusion-data-model.yml
+- name: Practice Fusion Patient Fusion PHR API
+  description: >-
+    Patient-facing personal health record API documented in the PDS API
+    Developer Guide. Serves a patient their own clinical documents and record
+    data from the Practice Fusion EHR, authorized with OAuth 2.0 plus OpenID
+    Connect through the Patient Fusion identity provider at
+    auth.patientfusion.com, which publishes a full OIDC/RFC 8414 discovery
+    document anonymously. Distinct from the FHIR PDS API: it uses a proprietary
+    JSON surface with its own status-code table (including 300 Multiple Choices
+    for an ambiguous patient match) rather than FHIR OperationOutcome.
+  humanURL: https://www.practicefusion.com/pds-api/developer-guide/
+  baseURL: https://api2.practicefusion.com/phr/patient/v1
+  properties:
+  - type: Documentation
+    url: https://www.practicefusion.com/pds-api/developer-guide/
+  - type: Authentication
+    url: authentication/practice-fusion-authentication.yml
+  - type: OpenIDConnect
+    url: https://auth.patientfusion.com/.well-known/openid-configuration
+  - type: WellKnown
+    url: well-known/practice-fusion-well-known.yml
+  - type: RateLimits
+    url: rate-limits/practice-fusion-rate-limits.yml
+  - type: ErrorCatalog
+    url: errors/practice-fusion-problem-types.yml
 - name: Practice Fusion Labs API
   description: >-
     Proprietary bi-directional laboratory integration API connecting practices
@@ -88,6 +121,16 @@ apis:
   properties:
   - type: Documentation
     url: https://www.practicefusion.com/labs-documentation/
+  - type: APIReference
+    url: https://www.practicefusion.com/assets/pdfs/HL7-Ordering-API-Developer-Guide-v1.5.pdf
+  - type: Specification
+    url: https://www.practicefusion.com/assets/pdfs/HL7-Order-Specification-v1.5.pdf
+  - type: Documentation
+    url: https://www.practicefusion.com/assets/pdfs/HL7-2.5.1-Lab-Results-API-Developer-Guide.pdf
+  - type: Documentation
+    url: https://www.practicefusion.com/assets/pdfs/HL7-2.3-Lab-Results-API-Developer-Guide.pdf
+  - type: GettingStarted
+    url: https://www.practicefusion.com/assets/pdfs/Practice-Fusion-API-Client-Installation-and-Usage-Guide-for-Windows.pdf
 - name: Practice Fusion Imaging API
   description: >-
     Proprietary bi-directional imaging integration API for order receipt and
@@ -98,6 +141,12 @@ apis:
   properties:
   - type: Documentation
     url: https://www.practicefusion.com/imaging-documentation/
+  - type: APIReference
+    url: https://www.practicefusion.com/assets/pdfs/HL7-Ordering-API-Developer-Guide.pdf
+  - type: Documentation
+    url: https://www.practicefusion.com/assets/pdfs/HL7-Radiology-Results-API-Developer-Guide-2.5.1.pdf
+  - type: GettingStarted
+    url: https://www.practicefusion.com/assets/pdfs/Practice-Fusion-API-Client-Installation-and-Usage-Guide-for-Windows.pdf
 common:
 - type: DomainSecurity
   url: security/practice-fusion-domain-security.yml
@@ -149,6 +198,34 @@ common:
   url: https://www.practicefusion.com/pages/terms-of-use.html
 - type: PrivacyPolicy
   url: https://www.practicefusion.com/pages/privacy-policy.html
+- type: Packages
+  url: packages/practice-fusion-packages.yml
+- type: Plans
+  url: plans/practice-fusion-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/practice-fusion-rate-limits.yml
+- type: ChangeLog
+  url: changelog/practice-fusion-changelog.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: TrustCenter
+  url: security/practice-fusion-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/practice-fusion-vulnerability-disclosure.yml
+- type: Security
+  url: https://veradigm.com/legal/security-program/
+- type: GitHubOrganization
+  url: https://github.com/practicefusion
+- type: Login
+  url: https://static.practicefusion.com/apps/ehr/
+- type: DeveloperPortal
+  url: https://www.practicefusion.com/developer-center/
+- type: Documentation
+  url: https://www.practicefusion.com/pds-api/developer-guide/
+- type: TermsOfService
+  url: https://www.practicefusion.com/pds-api/termsofservice/
+- type: Support
+  url: https://help.practicefusion.com/s/article/using-fhir-in-practice-fusion
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

@@ -1,0 +1,46 @@
+generated: '2026-08-14'
+method: probed
+source: https://help.practicefusion.com/s/releasenotes
+docs: https://help.practicefusion.com/s/releasenotes
+notes: >-
+  Practice Fusion publishes product release notes, but only for humans. The
+  /release-notes/ path on the marketing site 301s to a Salesforce Experience
+  Cloud (Lightning/Aura) community at help.practicefusion.com/s/releasenotes; the
+  HTTP 200 body is a 62 KB JavaScript application shell that contains no release
+  entries — the dated entries are fetched client-side from an Aura endpoint after
+  render. Nothing dated is machine-readable, so entries[] below is empty by
+  measurement, not by omission. There is NO changelog on the FHIR / PDS API
+  developer surface at all: neither the API specifications page nor the developer
+  guide carries a version history, a "what's new", or a deprecation notice.
+  The one machine-readable version trail Practice Fusion does publish is the EHI
+  Export data dictionary, which is versioned v1 through v9 as separate documented
+  index pages — recorded below as the closest thing to a dated API change record.
+scheme: none-published
+current_version: null
+api_changelog: false
+entries: []
+entry_count: 0
+evidence:
+- {url: 'https://www.practicefusion.com/release-notes/', http_status: 301, note: 'redirects cross-host to help.practicefusion.com/s/releasenotes'}
+- {url: 'https://help.practicefusion.com/s/releasenotes', http_status: 200, content_type: text/html, note: 'Salesforce Aura SPA shell; zero release entries in the served HTML'}
+- {url: 'https://www.practicefusion.com/fhir/api-specifications/', http_status: 200, note: 'no version history or change log section'}
+versioned_documentation_trail:
+  artifact: EHI Export Documentation
+  scheme: integer version directories
+  versions:
+  - {version: v1, url: 'https://www.practicefusion.com/ehi-export-documentation/v1/index/'}
+  - {version: v2, url: 'https://www.practicefusion.com/ehi-export-documentation/v2/index/'}
+  - {version: v3, url: 'https://www.practicefusion.com/ehi-export-documentation/v3/index/'}
+  - {version: v4, url: 'https://www.practicefusion.com/ehi-export-documentation/v4/index/'}
+  - {version: v5, url: 'https://www.practicefusion.com/ehi-export-documentation/v5/index/'}
+  - {version: v6, url: 'https://www.practicefusion.com/ehi-export-documentation/v6/index/'}
+  - {version: v7, url: 'https://www.practicefusion.com/ehi-export-documentation/v7/index/'}
+  - {version: v8, url: 'https://www.practicefusion.com/ehi-export-documentation/v8/index/'}
+  - {version: v9, url: 'https://www.practicefusion.com/ehi-export-documentation/v9/index/', current: true}
+  note: >-
+    Each version publishes its own full table-by-table data dictionary; older
+    versions remain online, so the diff between vN and vN+1 is the only
+    reconstructable record of schema change on the export surface.
+see:
+- lifecycle/practice-fusion-lifecycle.yml
+- data-model/practice-fusion-data-model.yml

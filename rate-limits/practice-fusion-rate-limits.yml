@@ -1,0 +1,42 @@
+generated: '2026-08-14'
+method: searched
+source: https://www.practicefusion.com/pds-api/developer-guide/
+docs: https://www.practicefusion.com/pds-api/developer-guide/
+notes: >-
+  Practice Fusion states that rate limiting IS enforced on every API call and
+  that exhaustion returns HTTP 429, but publishes NO numeric limit, no window,
+  no burst allowance and no rate-limit response headers. The developer guide is
+  explicit that the limits are deliberately undisclosed and adjustable: "All
+  developers will be subject to the same rate limiting logic, which was
+  determined and may be adjusted pursuant to an architectural risk analysis and
+  security best practices." An agent therefore has no runtime signal to budget
+  against beyond reacting to a 429 — there is no X-RateLimit-*/RateLimit-* or
+  Retry-After header documented anywhere on the developer surface.
+enforced: true
+limit_count: 0
+limits: []
+exhaustion:
+  status: 429
+  body: FHIR OperationOutcome (issue.code throttled)
+  retry_after_header: undocumented
+response_headers: []
+quotes:
+- text: >-
+    Rate limiting will be enforced for each API call to ensure the availability
+    of our infrastructure, as well as to mitigate the potential impact of
+    malicious actors from attempting to exploit our system.
+  source: https://www.practicefusion.com/pds-api/developer-guide/
+- text: >-
+    When a developer's account exceeds a limit, an HTTP 429 response will be
+    returned, and the account will need to issue another call once within the
+    limit.
+  source: https://www.practicefusion.com/pds-api/developer-guide/
+- text: >-
+    All developers will be subject to the same rate limiting logic, which was
+    determined and may be adjusted pursuant to an architectural risk analysis and
+    security best practices.
+  source: https://www.practicefusion.com/pds-api/developer-guide/
+scope: per developer account (API user), applied to every API call
+see:
+- conventions/practice-fusion-conventions.yml
+- errors/practice-fusion-problem-types.yml

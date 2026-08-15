@@ -1,0 +1,142 @@
+generated: '2026-08-14'
+method: searched
+source: https://www.practicefusion.com/pricing/
+sources:
+- https://www.practicefusion.com/pricing/
+- https://www.practicefusion.com/assets/misc/API-Fees-ONC-Cert-Criteria-for-Health-IT_May-2024.xlsx
+notes: >-
+  Two distinct commercial surfaces. (1) The EHR platform subscription that
+  practices buy, published on the pricing page. (2) The ONC Certification
+  Criteria for Health IT API fee disclosure Practice Fusion is required to
+  publish for API Information Sources and API Users — a spreadsheet stating that
+  Practice Fusion charges NO fee for FHIR API development, deployment, upgrade or
+  usage, plus the Veradigm Connect integrator subscription tiers that gate
+  marketing, certification and the proprietary Unity API. Values below are quoted
+  verbatim from those two published sources.
+currency: USD
+plan_count: 8
+plans:
+- name: Practice Fusion EHR
+  audience: medical-practice
+  price: 199
+  currency: USD
+  billing_period: month
+  unit: per provider
+  commitment: annual
+  included:
+  - 3 signing staff licenses & unlimited non-signing staff licenses
+  - Cloud-based EHR with automatic updates
+  - E-prescribing including controlled substances (EPCS)
+  - Lab and imaging integration
+  - Dedicated support (phone, chat, tickets)
+  - MIPS / Meaningful Use reporting dashboards
+  note: Price excludes taxes. Integrated billing services are a separately priced add-on.
+  source: https://www.practicefusion.com/pricing/
+- name: Complimentary trial
+  audience: medical-practice
+  price: 0
+  currency: USD
+  billing_period: null
+  duration: 2 weeks
+  note: No commitment, no credit card required.
+  source: https://www.practicefusion.com/pricing/
+- name: Veradigm Connect — Open
+  audience: api-developer
+  price: 0
+  currency: USD
+  billing_period: month
+  api_license_fee: 0
+  api_usage_fee_fhir: 0
+  included:
+  - Dev Portal tools/documentation
+  - Shared Sandboxes on developer.veradigm.com
+  - Go live with FHIR clients
+  - Mention on FHIR app listing (Veradigm App Expo)
+  excluded: [Unity API access, integration certification, marketing add-ons, dedicated account manager]
+  note: >-
+    Individual developers and companies can register FHIR apps, test using
+    development endpoints, declare apps as production ready, and enable them with
+    provider organizations at no cost and without intervention from Veradigm.
+- name: Veradigm Connect — Bronze Integrator
+  audience: api-developer
+  price: 49
+  price_annual: 529
+  currency: USD
+  billing_period: month
+  api_license_fee: 0
+  api_usage_fee_fhir: 0
+  included: [Dev Portal tools/documentation, Shared Sandboxes, Veradigm Connect Member Logo & Boilerplate Language, Go live with FHIR clients]
+- name: Veradigm Connect — Silver Integrator
+  audience: api-developer
+  price: 99
+  price_annual: 1069
+  currency: USD
+  billing_period: month
+  api_license_fee: 0
+  api_usage_fee_fhir: 0
+  included: [2 API Workshop passes, Introductory call, Member logo, Go live with FHIR clients]
+- name: Veradigm Connect — Gold Integrator
+  audience: api-developer
+  price: 499
+  price_annual: 5389
+  currency: USD
+  billing_period: month
+  api_license_fee: 0
+  api_usage_fee_fhir: 0
+  included:
+  - 3 API Workshop passes
+  - 1 integration certification + 1 re-certification
+  - Unity and FHIR go-live
+  - 1 page of content promotion on Veradigm App Expo
+  - Certified app logo
+  unity_api_usage: Variable rates, starting at $0
+- name: Veradigm Connect — Platinum Integrator
+  audience: api-developer
+  price: 1499
+  price_annual: 16190
+  currency: USD
+  billing_period: month
+  api_license_fee: 0
+  api_usage_fee_fhir: 0
+  included:
+  - 4 API Workshop passes
+  - 2 integration certifications + 2 re-certifications
+  - Unity and FHIR go-live
+  - 2 pages of content promotion
+  - Dedicated Account Manager
+  unity_api_usage: Variable rates, starting at $0
+- name: Veradigm Connect — Platinum Plus Integrator
+  audience: api-developer
+  price: 2499
+  price_annual: 26990
+  currency: USD
+  billing_period: month
+  api_license_fee: 0
+  api_usage_fee_fhir: 0
+  included:
+  - 5 API Workshop passes
+  - 3 integration certifications + 3 re-certifications
+  - Unity and FHIR go-live
+  - 3 pages of content promotion
+  - Dedicated Account Manager
+  unity_api_usage: Variable rates, starting at $0
+onc_api_fee_disclosure:
+  document: https://www.practicefusion.com/assets/misc/API-Fees-ONC-Cert-Criteria-for-Health-IT_May-2024.xlsx
+  last_updated: '2024-05-10'
+  sheet: Practice Fusion
+  development_deployment_upgrade: 'Not Applicable — Practice Fusion does not charge API fees for development, deployment or upgrade at this time.'
+  api_usage: 'Not Applicable — Practice Fusion does not charge API fees for API usage at this time, but may add these at some point in the future. Notice will be provided in such event.'
+  value_add_services: 'Practice Fusion does not offer any FHIR R4 API value add services at this time, but may add these at some point in the future.'
+  cost_disclosure: https://www.practicefusion.com/assets/misc/ONC-Mandatory-Disclosure-of-Costs-for-Practice-Fusion-EHR-3.7_Nov_2024(F).xlsx
+one_time_fees:
+- {item: Additional integration certification, price: 3500, currency: USD}
+- {item: Additional integration re-certification, price: 2800, currency: USD}
+- {item: Additional App Expo content page, price: 2000, currency: USD}
+- {item: API Workshop Event registrant, price: 299, currency: USD}
+caveats:
+- >-
+  The Veradigm Connect subscription tiers are published by Veradigm, Practice
+  Fusion's parent, on Practice Fusion's own domain as the API-User half of the
+  ONC fee disclosure; the marketing add-ons in that sheet are explicitly limited
+  to Veradigm EHR and Practice Management integrations, not Practice Fusion.
+- The Unity API is a Veradigm EHR/PM surface, not a Practice Fusion API.

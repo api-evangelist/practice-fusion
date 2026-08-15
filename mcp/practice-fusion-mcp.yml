@@ -1,14 +1,19 @@
-generated: '2026-07-20'
+generated: '2026-08-14'
 method: derived
 status: candidate
 source: conformance/practice-fusion-capability-statement.json
 notes: >-
-  No official Practice Fusion MCP server was found. This is a CANDIDATE tool
-  list derived from the FHIR R4 CapabilityStatement: every one of the 47
-  resource types supports `read` and (45 of them) `search-type`, so each maps to
-  a read-by-id tool and a search tool. A representative subset of the clinically
-  central US Core resources is enumerated below. Access is gated by SMART-on-FHIR
-  scopes (see scopes/practice-fusion-scopes.yml).
+  Practice Fusion ships NO first-party MCP server — searched the developer
+  surface (practicefusion.com/fhir, /pds-api/developer-guide, developer.veradigm.com),
+  the practicefusion GitHub organization (7 public repos, none MCP), npm and the
+  public MCP registries. The tool list below is a CANDIDATE derived from the FHIR
+  R4 CapabilityStatement served at the live service base URL: all 47 resource
+  types support `read`, 45 also support `search-type`, and Group additionally
+  supports create/update plus the Bulk Data `$export` operation. Access is gated
+  by SMART-on-FHIR scopes (see scopes/practice-fusion-scopes.yml). One
+  third-party community server exists and is recorded below for provenance; it is
+  not published by Practice Fusion or Veradigm and does not count as a provider
+  agent surface.
 server:
   name: practice-fusion
   transport: http
@@ -18,35 +23,104 @@ tools:
   description: Read a Patient resource by id.
   source_operation: fhir/r4/Patient/{id} [read]
 - name: search_patients
-  description: Search Patient resources (US Core parameters).
+  description: Search Patient resources.
   source_operation: fhir/r4/Patient [search-type]
+  parameters: [_id, active, address, birthdate, family, gender, given, identifier, name, telecom]
 - name: get_observation
   description: Read an Observation by id.
   source_operation: fhir/r4/Observation/{id} [read]
 - name: search_observations
   description: Search Observations for a patient (vitals, labs, smoking status).
   source_operation: fhir/r4/Observation [search-type]
+  parameters: [patient, category, code, date, encounter, status, value-quantity]
 - name: search_conditions
   description: Search a patient's Condition (problem list) resources.
   source_operation: fhir/r4/Condition [search-type]
+  parameters: [patient, category, clinical-status, code, onset-date, encounter]
 - name: search_medication_requests
   description: Search a patient's MedicationRequest resources.
   source_operation: fhir/r4/MedicationRequest [search-type]
+  parameters: [patient, status, intent, authoredon, code, encounter]
 - name: search_allergies
   description: Search a patient's AllergyIntolerance resources.
   source_operation: fhir/r4/AllergyIntolerance [search-type]
+  parameters: [patient, clinical-status, code, criticality, type]
 - name: search_immunizations
   description: Search a patient's Immunization resources.
   source_operation: fhir/r4/Immunization [search-type]
+  parameters: [patient, date, status, vaccine-code, lot-number]
 - name: search_encounters
   description: Search a patient's Encounter resources.
   source_operation: fhir/r4/Encounter [search-type]
+  parameters: [patient, class, date, status, type, practitioner, location]
 - name: search_diagnostic_reports
   description: Search a patient's DiagnosticReport resources.
   source_operation: fhir/r4/DiagnosticReport [search-type]
+  parameters: [patient, category, code, date, issued, status]
 - name: search_document_references
   description: Search a patient's DocumentReference resources.
   source_operation: fhir/r4/DocumentReference [search-type]
+  parameters: [patient, type, class, created, period, status]
+- name: get_binary
+  description: Read the raw content of a Binary referenced by a DocumentReference.
+  source_operation: fhir/r4/Binary/{id} [read]
+- name: search_coverage
+  description: Search a patient's insurance Coverage resources.
+  source_operation: fhir/r4/Coverage [search-type]
+  parameters: [patient, beneficiary, status, type, subscriber]
 - name: export_group
-  description: Kick off a FHIR Bulk Data group-level $export (async).
+  description: Kick off a FHIR Bulk Data group-level $export (async, 202 + Content-Location poll).
   source_operation: fhir/r4/Group/{id}/$export [operation]
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: oauth
+  verified: searched
+  tools: 14
+  checked: '2026-08-14'
+  note: >-
+    mode "none" because the PROVIDER ships nothing — neither a hosted endpoint
+    nor a stdio package. The tools above are derived from the CapabilityStatement
+    and are a design candidate, not a callable surface.
+third_party_servers:
+- name: practice-fusion-mcp
+  official: false
+  mode: local-stdio
+  install: npx -y practice-fusion-mcp
+  package: https://www.npmjs.com/package/practice-fusion-mcp
+  repository: https://github.com/kushaim/practice-fusion-mcp
+  version: 0.4.0
+  published: '2026-07-30'
+  license: MIT
+  auth: oauth
+  auth_note: SMART backend-services — signed JWT client assertion, client_credentials grant.
+  access: read-only
+  tool_count: 18
+  tool_prefix: practicefusion_
+  tools:
+  - practicefusion_search_patients
+  - practicefusion_get_patient
+  - practicefusion_search_practitioners
+  - practicefusion_get_conditions
+  - practicefusion_get_medications
+  - practicefusion_get_lab_results
+  - practicefusion_get_vitals
+  - practicefusion_get_allergies
+  - practicefusion_get_immunizations
+  - practicefusion_get_appointments
+  - practicefusion_get_encounters
+  - practicefusion_get_documents
+  - practicefusion_get_coverage
+  - practicefusion_get_everything
+  - practicefusion_get_procedures
+  - practicefusion_get_diagnostic_reports
+  - practicefusion_get_care_plans
+  - practicefusion_get_goals
+  verified: searched
+  source: https://registry.npmjs.org/practice-fusion-mcp
+  note: >-
+    Community project. Listed so the catalog does not mistake it for a
+    first-party surface, and so a reader knows an agent path exists at all.
+    Tool names read verbatim from the package README on the npm registry.

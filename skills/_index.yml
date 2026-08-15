@@ -1,0 +1,31 @@
+generated: '2026-08-14'
+method: generated
+source: >-
+  conformance/practice-fusion-capability-statement.json (fetched from
+  https://api.practicefusion.com/fhir/r4/v1/{organizationId}/metadata),
+  well-known/practice-fusion-smart-configuration.json
+notes: >-
+  Practice Fusion publishes no OpenAPI and no provider-authored agent skills.
+  These skills are grounded in the FHIR R4 CapabilityStatement the live service
+  base URL serves: every interaction, resource type and search parameter named in
+  them was read out of that document, not invented. Practice Fusion's contract is
+  a CapabilityStatement rather than an OpenAPI, so operations[] use FHIR
+  interaction identifiers (`GET /Condition [search-type]`) in place of
+  operationIds.
+skills:
+- file: practice-fusion-connect-smart.md
+  name: Connect to a Practice Fusion FHIR endpoint with SMART on FHIR
+  api: conformance/practice-fusion-capability-statement.json
+  operations: [smart-configuration, metadata, authorize, token, introspect]
+- file: practice-fusion-patient-chart-summary.md
+  name: Assemble a patient chart summary
+  api: conformance/practice-fusion-capability-statement.json
+  operations: [Patient.search, Patient.read, Condition.search, MedicationRequest.search, AllergyIntolerance.search, Immunization.search, Observation.search, Encounter.search, DiagnosticReport.search]
+- file: practice-fusion-bulk-export.md
+  name: Run a FHIR Bulk Data group export
+  api: conformance/practice-fusion-capability-statement.json
+  operations: [Group.search, Group.create, Group.update, Group.$export, Binary.read]
+- file: practice-fusion-clinical-documents.md
+  name: Retrieve clinical documents and provenance
+  api: conformance/practice-fusion-capability-statement.json
+  operations: [DocumentReference.search, DocumentReference.read, Binary.read, Provenance.search, Practitioner.read, Organization.read]

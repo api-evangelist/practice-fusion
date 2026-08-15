@@ -1,6 +1,7 @@
-generated: '2026-07-20'
-method: derived
+generated: '2026-08-14'
+method: searched
 source: conformance/practice-fusion-capability-statement.json
+docs: https://www.practicefusion.com/ehi-export-documentation/v9/index/
 notes: >-
   Entity-relationship graph derived from the 47 FHIR R4 resource types the
   Practice Fusion CapabilityStatement exposes, plus the standard US Core
@@ -76,3 +77,35 @@ entities:
 - name: Provenance
   relationships:
   - {type: has_many, target: Practitioner, via: agent.who}
+ehi_export_model:
+  method: searched
+  source: https://www.practicefusion.com/ehi-export-documentation/v9/index/
+  version: v9
+  all_versions: [v1, v2, v3, v4, v5, v6, v7, v8, v9]
+  table_count: 85
+  notes: >-
+    Beyond the 47 FHIR resources, Practice Fusion publishes a full table-level
+    data dictionary for its ONC-mandated Electronic Health Information (EHI)
+    export — one documented page per table, versioned v1 through v9. This is the
+    provider's own internal record model rather than the FHIR projection, and it
+    is considerably wider: it covers scheduling, messaging, referrals,
+    prescriptions and superbill/financial entities the FHIR API does not expose
+    at all. Table names below are read verbatim from the v9 index; each has its
+    own field-level page at
+    https://www.practicefusion.com/ehi-export-documentation/v9/<table>/.
+  domains:
+    patient_core: [patient-demographics, patient-contacts, patient-race, patient-ethnicity, patient-gender-identity-sexual-orientation, tribal-affiliation, occupation-industry, patient-restrictions, patient-advance-directives, patient-guarantor, patient-financial-resources, communication-settings, contact-profiles]
+    clinical: [patient-conditions, patient-diagnoses, patient-allergy, patient-allergy-reactions, patient-health-concerns, patient-goals, patient-family-medical-history, patient-family-history-diagnoses, patient-healthcare-devices, patient-smokingstatus, patient-risk-scores, patient-education, patient-questionnaire, pinned-notes]
+    encounters: [patient-encounters, patient-encounter-addendums, patient-encounter-diagnoses, patient-encounter-documents, patient-encounter-events, patient-encounter-medications, patient-encounter-observations, patient-encounter-procedures, patient-appointments, patient-clinical-worksheet-summaries, patient-clinical-worksheet-detail]
+    medications: [patient-medications, patient-med-history, patient-medication-history-consent, patient-prescriptions, prescription-transactions, patient-drug-alert-overrides, pharmacies, preferred-pharmacy]
+    labs_and_orders: [labs, patient-lab-orders, patient-lab-order-items, patient-lab-order-item-answers, patient-lab-order-item-diagnoses, patient-lab-order-item-specimens, patient-lab-order-documents, patient-lab-results, patient-lab-result-documents, patient-lab-result-notes, patient-lab-result-item-notes, patient-lab-result-tests-observations, patient-lab-result-test-observation-diagnoses, lab-result-item-specimen-data, lab-result-tests-observation-notes]
+    immunizations: [patient-immunizations, patient-immunization-registry, patient-immunization-transmission-history, immunization-vis-editions]
+    documents_and_messaging: [patient-documents, patient-messages, patient-message-attachments, patient-message-recipients, patient-referrals, patient-referral-recipients]
+    coverage_and_billing: [patient-insurances, patient-insurance-eligibilities, patient-superbills, superbill-diagnosis, superbill-events, superbill-insurances, superbill-procedures, superbill-procedure-modifiers]
+    directory: [providers, provider-profiles, users, facilities, care-team, care-team-profiles]
+  fhir_gap: >-
+    Entities documented in the EHI export with no counterpart in the 47-resource
+    FHIR surface include patient-appointments (scheduling), patient-messages and
+    attachments (secure messaging), patient-referrals, prescription-transactions,
+    and the whole superbill family — a known limitation the Practice Fusion
+    developer community raises for appointment-scheduling integrations.

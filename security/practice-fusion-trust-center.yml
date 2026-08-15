@@ -1,0 +1,45 @@
+generated: '2026-08-14'
+method: searched
+probe: true
+url: https://veradigm.com/legal/security-program/
+notes: >-
+  Practice Fusion serves no trust centre of its own — trust.practicefusion.com
+  does not resolve and /security, /responsible-disclosure and
+  /vulnerability-disclosure all 404 on www.practicefusion.com. The published
+  security and compliance posture for the product sits one level up, at its
+  parent Veradigm, whose Security Program page names the certifications and
+  accreditations that cover certified Veradigm products (Practice Fusion is a
+  Veradigm company and an ONC Certified Health IT product). Practice Fusion
+  publishes its own ONC certification, Real World Testing and EHI export
+  disclosures on its own domain; those are listed separately below.
+certifications:
+- SOC 2 Type 2
+- EHNAC accreditation
+- EPCS certification
+- ISO 9001:2015
+- ONC Certification Rule (Certified Health IT)
+- HIPAA
+first_party_disclosures:
+- {name: ONC Certified EHR, url: 'https://www.practicefusion.com/onc-certified-ehr/', http_status: 200}
+- {name: ONC Real World Testing, url: 'https://www.practicefusion.com/real-world-testing/', http_status: 200}
+- {name: EHI Export Documentation, url: 'https://www.practicefusion.com/ehi-export-documentation/', http_status: 200}
+- {name: pDSI Intervention Risk Management Summary, url: 'https://www.practicefusion.com/pdsi-intervention-risk-management-summary/'}
+- {name: ONC Mandatory Disclosure of Costs, url: 'https://www.practicefusion.com/assets/misc/ONC-Mandatory-Disclosure-of-Costs-for-Practice-Fusion-EHR-3.7_Nov_2024(F).xlsx'}
+security_controls_published:
+- Authentication, access control, authorization, auditing and encryption per the ONC Certification Rule
+- Secure development lifecycle with risk-based threat modeling, automated code reviews and security testing
+- Firewalls, IDS/IPS, proactive vulnerability scanning, backup and disaster recovery
+- 24x7 Veradigm Security Operations Center monitoring
+quote: >-
+  Veradigm maintains a robust compliance environment based on leading industry
+  standards. To validate our security controls and foster continuous improvement,
+  Veradigm engages in certification, accreditation and independent reviews for our
+  products and service offerings. These activities include, but are not limited
+  to, SOC 2, Type 2 reports, EHNAC accreditation, EPCS certifications and ISO
+  9001:2015 reviews.
+evidence:
+- {source: 'https://veradigm.com/legal/security-program/', http_status: 200, keywords: [soc 2, ehnac, epcs, iso 9001:2015, security program, onc certification rule]}
+- {source: 'https://veradigm.com/legal/privacy-and-security-program/', http_status: 200}
+- {source: 'https://trust.practicefusion.com/', http_status: 0, note: 'host does not resolve'}
+- {source: 'https://www.practicefusion.com/security/', http_status: 404}
+checked: '2026-08-14'

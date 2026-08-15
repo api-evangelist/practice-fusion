@@ -1,0 +1,61 @@
+generated: '2026-08-14'
+method: searched
+source: >-
+  https://registry.npmjs.org/-/v1/search?text=practice-fusion ,
+  https://pypi.org/pypi/practicefusion/json ,
+  https://api.github.com/orgs/practicefusion/repos ,
+  https://www.practicefusion.com/fhir/api-specifications/
+notes: >-
+  Practice Fusion publishes NO first-party client SDK in any public package
+  registry. npm, PyPI, RubyGems, NuGet, Maven Central, crates.io and pkg.go.dev
+  were searched for "practice-fusion" / "practicefusion" and none returned a
+  Practice Fusion- or Veradigm-published client library. The company's GitHub
+  organization (https://github.com/practicefusion, 7 public repos, last pushed
+  2025-02-11) contains an internal ActiveMQ monitor, an MME calculator, and forks
+  of third-party style guides — no API client. The FHIR API is consumed with
+  generic SMART-on-FHIR / HL7 FHIR R4 client libraries, and the Labs/Imaging
+  APIs ship a Windows "API Client" installer distributed as a PDF-documented
+  download rather than a registry package.
+official_sdk_count: 0
+packages: []
+third_party_packages:
+- language: javascript
+  registry: npm
+  name: practice-fusion-mcp
+  url: https://www.npmjs.com/package/practice-fusion-mcp
+  install: npx -y practice-fusion-mcp
+  version: 0.4.0
+  published: '2026-07-30'
+  license: MIT
+  official: false
+  repository: https://github.com/kushaim/practice-fusion-mcp
+  npm_maintainer: r21digital
+  description: >-
+    FHIR-first, read-only Model Context Protocol server for Practice Fusion; 18
+    read tools over the Practice Fusion FHIR R4 API using SMART backend-services
+    (signed JWT assertion, client_credentials).
+  note: >-
+    Community/third-party, NOT published by Practice Fusion or Veradigm. Recorded
+    here for provenance only; it does not count toward the provider's SDK surface.
+    Only version published to date (created 2026-07-30).
+distribution_only:
+- name: Practice Fusion API Client for Windows
+  kind: installer
+  registry: none
+  version: null
+  published: null
+  url: https://www.practicefusion.com/assets/pdfs/Practice-Fusion-API-Client-Installation-and-Usage-Guide-for-Windows.pdf
+  official: true
+  note: >-
+    The Labs / Imaging HL7 v2 integration ships a Windows API Client whose only
+    public artifact is an installation-and-usage PDF. There is no package
+    registry entry and the PDF names no version, so version/published are null —
+    checked, nothing to record.
+registries_checked:
+- {registry: npm, query: 'practice-fusion / practicefusion', first_party_hits: 0}
+- {registry: pypi, query: 'practice-fusion / practicefusion', first_party_hits: 0, http_status: 404}
+- {registry: rubygems, query: practicefusion, first_party_hits: 0}
+- {registry: nuget, query: practicefusion, first_party_hits: 0}
+- {registry: maven-central, query: practicefusion, first_party_hits: 0}
+- {registry: crates.io, query: practicefusion, first_party_hits: 0}
+- {registry: pkg.go.dev, query: practicefusion, first_party_hits: 0}
