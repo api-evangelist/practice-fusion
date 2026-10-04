@@ -1,21 +1,19 @@
-# Kin Score artifact — practice-fusion — 2026-08-29T213958
+# Kin Score artifact — practice-fusion — 2026-10-03T000835
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: practice-fusion
-  schema_version: 0.16.0
-  scored_at: '2026-08-29'
-  run_ts: 2026-08-29T213958
-  composite: 61.4
+  schema_version: 0.23.0
+  scored_at: '2026-10-03'
+  run_ts: 2026-10-03T000835
+  composite: 57.4
   band: strong
   facets:
-    discoverability: 81.5
-    contract_quality: 34.4
-    governance: 18.2
+    discoverability: 78.6
+    contract_quality: 32.3
+    contract_governance: 18.2
     operational_transparency: 44.7
     developer_ergonomics: 56.5
-    commercial_clarity: 85.5
-    contract_governance: 18.2
     access_clarity: 85.5
   agent_readiness:
     score: 37.6
@@ -44,7 +42,7 @@ kin_score:
     applies: true
     regime: Health
     regime_id: health
-    score: 73.8
+    score: 46.1
     matched_via: tags
   provenance:
     mcp: derived
