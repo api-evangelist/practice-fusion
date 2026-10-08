@@ -140,3 +140,60 @@ caveats:
   ONC fee disclosure; the marketing add-ons in that sheet are explicitly limited
   to Veradigm EHR and Practice Management integrations, not Practice Fusion.
 - The Unity API is a Veradigm EHR/PM surface, not a Practice Fusion API.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units: []
+  plans:
+  - name: Practice Fusion EHR
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods: []
+  - name: Complimentary trial
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Veradigm Connect — Open
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Veradigm Connect — Bronze Integrator
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Veradigm Connect — Silver Integrator
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Veradigm Connect — Gold Integrator
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Veradigm Connect — Platinum Integrator
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Veradigm Connect — Platinum Plus Integrator
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
