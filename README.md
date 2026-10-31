@@ -64,6 +64,128 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Practice Fusion is a company surfaced as a portfolio company of battery-ventures and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Practice Fusion is a cloud-based electronic health record (EHR) platform for independent ambulatory medical practices, serving roughly 6.4% of U.S. ambulatory practices with more than 43 million clinical records and around 5 million patient visits per month. Its developer surface centers on an ONC Certified Health IT FHIR R4 (Patient Data Sharing / PDS) API implementing US Core 6.1.0, SMART App Launch 2.0.0, and Bulk Data Access 1.0.1 over SMART-on-FHIR OAuth2, alongside proprietary bi-directional Labs and Imaging APIs and a partner marketplace of 600+ integrated companies.
 
-Backed by: battery-ventures
+**Areas:** Company · Healthcare · Electronic Health Records · FHIR · Interoperability · Medical · Health IT · SMART on FHIR · Clinical Data
+
+## Practice Fusion on APIs.io
+
+Everything profiled for Practice Fusion is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/practice-fusion/](https://apis.io/providers/practice-fusion/)** — or go straight to one of the APIs or properties below.
+
+### APIs (4)
+
+- [Practice Fusion FHIR API (Patient Data Sharing)](https://apis.io/apis/practice-fusion/practice-fusion-fhir-api-patient-data-sharing/) — ONC Certified FHIR R4 (v4.0.1) API implementing US Core 6.1.0, SMART App Launch 2.0.0, and Bulk Data Access 1.0.1. Provides read and search access across 47…
+- [Practice Fusion Patient Fusion PHR API](https://apis.io/apis/practice-fusion/practice-fusion-patient-fusion-phr-api/) — Patient-facing personal health record API documented in the PDS API Developer Guide. Serves a patient their own clinical documents and record data from the…
+- [Practice Fusion Labs API](https://apis.io/apis/practice-fusion/practice-fusion-labs-api/) — Proprietary bi-directional laboratory integration API connecting practices with 300+ independent, hospital, and health-system labs including Labcorp, Quest…
+- [Practice Fusion Imaging API](https://apis.io/apis/practice-fusion/practice-fusion-imaging-api/) — Proprietary bi-directional imaging integration API for order receipt and study transmission across imaging providers, supporting 100,000+ medical professionals.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [practice-fusion](https://apis.io/servers/practice-fusion/practice-fusion/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Practice Fusion Authentication](https://apis.io/security/practice-fusion/practice-fusion-authentication/)
+- [Practice Fusion Domain Security](https://apis.io/security/practice-fusion/practice-fusion-domain-security/)
+- [Practice Fusion Trust Center](https://apis.io/security/practice-fusion/practice-fusion-trust-center/)
+- [Practice Fusion Vulnerability Disclosure](https://apis.io/security/practice-fusion/practice-fusion-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Practice Fusion Scopes](https://apis.io/scopes/practice-fusion/practice-fusion-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Practice Fusion Plans Pricing](https://apis.io/plans/practice-fusion/practice-fusion-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Practice Fusion Rate Limits](https://apis.io/rate-limits/practice-fusion/practice-fusion-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.practicefusion.com/)
+- [Documentation](https://www.practicefusion.com/fhir/api-specifications/)
+- [Getting started](https://www.practicefusion.com/fhir/get-started/)
+- [API reference](https://www.practicefusion.com/fhir/api-specifications/)
+- [Pricing](https://www.practicefusion.com/pricing/)
+- [Sign up](https://pfpds.practicefusion.com/s/Registration)
+- [Support](https://partnersupport.practicefusion.com/s/)
+- [Blog](https://www.practicefusion.com/blog/)
+- [Security](https://veradigm.com/legal/security-program/)
+- [Compliance](https://www.practicefusion.com/onc-certified-ehr/)
+- [Terms of service](https://www.practicefusion.com/pages/terms-of-use.html)
+- [Privacy policy](https://www.practicefusion.com/pages/privacy-policy.html)
+- [GitHub](https://github.com/practicefusion)
+- [Status](https://status.practicefusion.com/)
+
+## API Evangelist rating
+
+**Kin Score 57.4** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 78.6 |
+| Contract quality | 32.3 |
+| Contract governance | 18.2 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 56.5 |
+| Access clarity | 85.5 |
+
+**Agent readiness 37.6** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 46.1** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/practice-fusion/](https://apis.io/providers/practice-fusion/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Practice Fusion: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/practice-fusion/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
